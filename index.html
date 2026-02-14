@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Twobars' Comeback</title>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <header>
+          <h1>Task Management for 2bars</h1>
+        </header>
+        <section>
+          <h3>Log in</h3>
+          <form>
+            <label for="uname">Username:</label><br />
+            <input type="text" id="uname" name="uname" value="twobars" /><br />
+            <label for="upassword">Password:</label><br />
+            <input
+              type="password"
+              id="upassword"
+              name="upassword"
+              value="********"
+            /><br />
+            <input type="submit" value="Log in" /><br />
+          </form>
+          <br />
+          <h3>Add new task</h3>
+          <form>
+            <label for="tname">Task name:</label><br />
+            <input
+              type="text"
+              id="tname"
+              name="tname"
+              value="Write poem"
+              required
+            /><br />
+            <label for="tdescription">Task description:</label><br />
+            <textarea id="tdescription" name="tdescription"></textarea><br />
+            <label for="tstatus">Task status:</label><br />
+            <select id="tstatus" name="tstatus">
+              <option>Pending</option>
+              <option>In progress</option>
+              <option>Completed</option>
+            </select>
+            <label for="tdeadline">Task deadline:</label><br />
+            <input
+              type="datetime-local"
+              id="tdeadline"
+              name="tdeadline"
+            /><br />
+            <input type="submit" value="Add task" /><br />
+          </form>
+        </section>
+        <br />
+        <section>
+          <h3>List of tasks:</h3>
+          <ul class="task-list">
+            <li class="task-item">
+              <h4>Title</h4>
+              <p>Description</p>
+              <span class="badge">Pending</span>
+              <p>Deadline: 2026-02-14 20:00</p>
+              <p>CreatedAt: 2026-02-14 10:00</p>
+              <button class="btn-edit">Edit</button>
+              <button class="btn-delete">Delete</button>
+            </li>
+          </ul>
+          <p>No tasks yet</p>
+        </section>
+        <br />
+      </main>
+      <footer>Twobars©1998–2026</footer>
+    </div>
+  </body>
+</html>
