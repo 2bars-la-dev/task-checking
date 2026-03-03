@@ -14,7 +14,7 @@
         <div class="page-body">
           <section class="input-field">
             <h3>Log in</h3>
-            <form>
+            <form id="login-form">
               <label for="uname">Username:</label>
               <input type="text" id="uname" name="uname" value="twobars" />
               <label for="upassword">Password:</label>
@@ -28,7 +28,7 @@
             </form>
 
             <h3>Add new task</h3>
-            <form>
+            <form id="task-form">
               <label for="tname">Task name:</label>
               <input
                 type="text"
@@ -38,7 +38,9 @@
                 required
               />
               <label for="tdescription">Task description:</label>
-              <textarea id="tdescription" name="tdescription"></textarea>
+              <textarea id="tdescription" name="tdescription">
+Description</textarea
+              >
               <label for="tstatus">Task status:</label>
               <select id="tstatus" name="tstatus">
                 <option>Pending</option>
@@ -52,36 +54,33 @@
           </section>
           <section class="display-field">
             <h3>List of tasks:</h3>
-            <!-- <ul class="task-list">
-              <li class="task-item">
-                <h4>Title</h4>
-                <p>Description</p>
-                <span class="badge todo">Todo</span>
-                <p>Deadline: 2026-02-14 20:00</p>
-                <p>CreatedAt: 2026-02-14 10:00</p>
-                <button class="btn-edit">Edit</button>
-                <button class="btn-delete">Delete</button>
-              </li>
-              <li class="task-item">
-                <h4>Title</h4>
-                <p>Description</p>
-                <span class="badge doing">doing</span>
-                <p>Deadline: 2026-02-14 20:00</p>
-                <p>CreatedAt: 2026-02-14 10:00</p>
-                <button class="btn-edit">Edit</button>
-                <button class="btn-delete">Delete</button>
-              </li>
-              <li class="task-item">
-                <h4>Title</h4>
-                <p>Description</p>
-                <span class="badge done">doing</span>
-                <p>Deadline: 2026-02-14 20:00</p>
-                <p>CreatedAt: 2026-02-14 10:00</p>
-                <button class="btn-edit">Edit</button>
-                <button class="btn-delete">Delete</button>
-              </li>
-            </ul> -->
             <ul class="task-list">
+              <!-- <li class="task-item">
+                <h4>Title</h4>
+                <p>Description</p>
+                <span class="badge todo">Pending</span>
+                <p>Deadline: 2026-02-14 20:00</p>
+                <button class="btn-edit">Edit</button>
+                <button class="btn-delete">Delete</button>
+              </li>
+              <li class="task-item">
+                <h4>Title</h4>
+                <p>Description</p>
+                <span class="badge doing">In progress</span>
+                <p>Deadline: 2026-02-14 20:00</p>
+                <button class="btn-edit">Edit</button>
+                <button class="btn-delete">Delete</button>
+              </li>
+              <li class="task-item">
+                <h4>Title</h4>
+                <p>Description</p>
+                <span class="badge done">Completed</span>
+                <p>Deadline: 2026-02-14 20:00</p>
+                <button class="btn-edit">Edit</button>
+                <button class="btn-delete">Delete</button>
+              </li> -->
+            </ul>
+            <!-- <ul class="task-list">
               <li class="task-item">
                 <h4>
                   This is an extremely long task title designed to test how the
@@ -172,12 +171,12 @@
                   Permanently archive this completed task with long wording
                 </button>
               </li>
-            </ul>
-            <p>No tasks yet</p>
+            </ul> -->
           </section>
         </div>
       </main>
       <footer>Twobars©1998–2026</footer>
     </div>
+    <script src="main.js"></script>
   </body>
 </html>
