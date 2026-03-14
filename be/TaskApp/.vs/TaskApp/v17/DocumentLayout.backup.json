@@ -5,6 +5,26 @@
     {
       "AbsoluteMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|f:\\twobars\\eng\\programming\\fullstack\\task-checking\\be\\taskapp\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|solutionrelative:controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|f:\\twobars\\eng\\programming\\fullstack\\task-checking\\be\\taskapp\\dtos\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|solutionrelative:dtos\\taskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|f:\\twobars\\eng\\programming\\fullstack\\task-checking\\be\\taskapp\\models\\todotask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|solutionrelative:models\\todotask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|f:\\twobars\\eng\\programming\\fullstack\\task-checking\\be\\taskapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|f:\\twobars\\eng\\programming\\fullstack\\task-checking\\be\\taskapp\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|solutionrelative:mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|f:\\twobars\\eng\\programming\\fullstack\\task-checking\\be\\taskapp\\dtos\\addtaskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29ABADAD-ED5E-48E3-AB58-DE838ED65B76}|TaskApp.csproj|solutionrelative:dtos\\addtaskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,13 +66,78 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddTaskDTO.cs",
+              "DocumentMoniker": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\DTOs\\AddTaskDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\AddTaskDTO.cs",
+              "ToolTip": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\DTOs\\AddTaskDTO.cs",
+              "RelativeToolTip": "DTOs\\AddTaskDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T16:44:22.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T15:39:40.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "MappingProfile.cs",
+              "ToolTip": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\MappingProfile.cs",
+              "RelativeToolTip": "MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T15:39:09.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaskDTO.cs",
+              "DocumentMoniker": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\DTOs\\TaskDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\TaskDTO.cs",
+              "ToolTip": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\DTOs\\TaskDTO.cs",
+              "RelativeToolTip": "DTOs\\TaskDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T15:34:26.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TodoTask.cs",
+              "DocumentMoniker": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\Models\\TodoTask.cs",
+              "RelativeDocumentMoniker": "Models\\TodoTask.cs",
+              "ToolTip": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\Models\\TodoTask.cs",
+              "RelativeToolTip": "Models\\TodoTask.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T15:31:32.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "TasksController.cs",
               "DocumentMoniker": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\Controllers\\TasksController.cs",
               "RelativeDocumentMoniker": "Controllers\\TasksController.cs",
               "ToolTip": "F:\\TwoBars\\eng\\Programming\\fullstack\\task-checking\\be\\TaskApp\\Controllers\\TasksController.cs",
               "RelativeToolTip": "Controllers\\TasksController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAuwCcAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-12T16:04:26.578Z",
               "EditorCaption": ""
