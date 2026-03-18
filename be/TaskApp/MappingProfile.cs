@@ -10,7 +10,7 @@ namespace TaskApp
         {
             CreateMap<CreateTaskDTO, TodoTask>();
 
-            CreateMap<TodoTask, TaskResonseDTO>();
+            CreateMap<TodoTask, TaskResponseDTO>();
         }
     }
 }

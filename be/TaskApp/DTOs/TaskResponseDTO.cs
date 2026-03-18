@@ -2,7 +2,7 @@
 
 namespace TaskApp.DTOs
 {
-    public class TaskResonseDTO
+    public class TaskResponseDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

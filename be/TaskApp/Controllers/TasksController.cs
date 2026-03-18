@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TaskApp.DataContext;
 using TaskApp.DTOs;
 using TaskApp.Models;
 
@@ -11,60 +12,21 @@ namespace TaskApp.Controllers
     public class TasksController : ControllerBase
     {
         public readonly IMapper _mapper;
+        public readonly ApplicationDbContext _context;
 
-        public TasksController(IMapper mapper) 
+        public TasksController(IMapper mapper, ApplicationDbContext context) 
         {
             _mapper = mapper;
+            _context = context;
         }
 
         [HttpGet]
         public IActionResult GetAllTasks()
         {
-            var tasks = new List<TodoTask>
-            {
-                new TodoTask
-                {
-                    Id = 1,
-                    Name = "Learn ASP.NET Core",
-                    Description = "Study controllers, routing, and middleware",
-                    Status = TodoTaskStatus.InProgress,
-                    Deadline = DateTime.Now.AddDays(5)
-                },
-                new TodoTask
-                {
-                    Id = 2,
-                    Name = "Build Task API",
-                    Description = "Implement CRUD endpoints for tasks",
-                    Status = TodoTaskStatus.Pending,
-                    Deadline = DateTime.Now.AddDays(7)
-                },
-                new TodoTask
-                {
-                    Id = 3,
-                    Name = "Learn Entity Framework Core",
-                    Description = "Understand DbContext, migrations, and LINQ",
-                    Status = TodoTaskStatus.Pending,
-                    Deadline = DateTime.Now.AddDays(10)
-                },
-                new TodoTask
-                {
-                    Id = 4,
-                    Name = "Add AutoMapper",
-                    Description = "Map DTOs and entities automatically",
-                    Status = TodoTaskStatus.Completed,
-                    Deadline = DateTime.Now.AddDays(-2)
-                },
-                new TodoTask
-                {
-                    Id = 5,
-                    Name = "Write API documentation",
-                    Description = "Describe endpoints and request/response models",
-                    Status = TodoTaskStatus.Pending,
-                    Deadline = DateTime.Now.AddDays(3)
-                }
-            };
+            
+            List<TodoTask> tasks = _context.TodoTasks.ToList();
 
-            var result = _mapper.Map<List<TaskResonseDTO>>(tasks);
+            var result = _mapper.Map<List<TaskResponseDTO>>(tasks);
 
             return Ok(result);
         }

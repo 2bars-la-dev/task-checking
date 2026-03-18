@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
+using TaskApp.DataContext;
+
 namespace TaskApp
 {
     public class Program
@@ -8,12 +12,14 @@ namespace TaskApp
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(options => { 
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
             builder.Services.AddAutoMapper(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
             });
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
