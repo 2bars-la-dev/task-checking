@@ -9,7 +9,7 @@ namespace TaskApp
         public MappingProfile() 
         {
             CreateMap<CreateTaskDTO, TodoTask>();
-
+            CreateMap<UpdateTaskDTO, TodoTask>();
             CreateMap<TodoTask, TaskResponseDTO>();
         }
     }

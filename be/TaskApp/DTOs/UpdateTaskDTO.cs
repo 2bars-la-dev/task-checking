@@ -3,7 +3,7 @@ using TaskApp.Models;
 
 namespace TaskApp.DTOs
 {
-    public class CreateTaskDTO
+    public class UpdateTaskDTO
     {
         [Required]
         [MaxLength(200)]
@@ -11,7 +11,7 @@ namespace TaskApp.DTOs
 
         [MaxLength(1000)]
         public string Description { get; set; }
-        public TodoTaskStatus Status { get; set; } = TodoTaskStatus.Pending;
+        public TodoTaskStatus Status { get; set; } 
         public DateTime Deadline { get; set; }
     }
 }
