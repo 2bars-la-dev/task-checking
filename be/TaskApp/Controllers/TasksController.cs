@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using TaskApp.DataContext;
+﻿using Microsoft.AspNetCore.Mvc;
 using TaskApp.DTOs;
-using TaskApp.Models;
+using TaskApp.Services;
 
 namespace TaskApp.Controllers
 {
@@ -10,98 +8,73 @@ namespace TaskApp.Controllers
     [ApiController]
     public class TasksController : ControllerBase
     {
-        public readonly IMapper _mapper;
-        public readonly ApplicationDbContext _context;
+        private readonly ITaskService _taskService;
 
-        public TasksController(IMapper mapper, ApplicationDbContext context) 
+        public TasksController(ITaskService taskService)
         {
-            _mapper = mapper;
-            _context = context;
+            _taskService = taskService;
         }
 
         [HttpGet]
         public IActionResult GetAllTasks()
         {
-            //Get the list from database
-            List<TodoTask> tasks = _context.TodoTasks.ToList();
+            // Call service to get all tasks
+            var result = _taskService.GetAll();
 
-            //Map to dto
-            var result = _mapper.Map<List<TaskResponseDTO>>(tasks);
+            // Return 200 OK with list
             return Ok(result);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetTask(int id)
         {
-            //Find the task
-            TodoTask? task = _context.TodoTasks.FirstOrDefault(t => t.Id == id);
+            // Call service to find task by id
+            var task = _taskService.GetById(id);
+
+            // Return 404 if not found
             if (task == null) return NotFound();
 
-            TaskResponseDTO taskResponseDTO = _mapper.Map<TaskResponseDTO>(task);
-            return Ok(taskResponseDTO);
+            // Return 200 OK with task data
+            return Ok(task);
         }
 
         [HttpPost]
-        public IActionResult AddTask([FromBody] CreateTaskDTO taskDto)
+        public IActionResult AddTask([FromBody] CreateTaskDTO dto)
         {
-            // Map DTO (client data) to Entity model
-            TodoTask task = _mapper.Map<TodoTask>(taskDto);
+            // Call service to create new task
+            var result = _taskService.Create(dto);
 
-            // Add new task to DbContext (not saved to DB yet)
-            _context.TodoTasks.Add(task);
-
-            // Persist changes to the database
-            _context.SaveChanges();
-
-            // Map saved entity back to response DTO
-            var result = _mapper.Map<TaskResponseDTO>(task);
-
-            // Return 201 Created with location header to GET endpoint
+            // Return 201 Created with location header
             return CreatedAtAction(
-                nameof(GetTask),           // Target action to retrieve created resource
-                new { id = task.Id },      // Route values (new resource ID)
-                result                     // Response body
+                nameof(GetTask),        // Endpoint to get created task
+                new { id = result.Id }, // Route value
+                result                 // Response body
             );
         }
 
         [HttpPut("{id}")]
         public IActionResult EditTask(int id, [FromBody] UpdateTaskDTO dto)
         {
-            // Find existing task by id
-            var todoTask = _context.TodoTasks.FirstOrDefault(t => t.Id == id);
+            // Call service to update task
+            var isUpdated = _taskService.Update(id, dto);
 
-            // Return 404 if not found
-            if (todoTask == null) return NotFound();
+            // Return 404 if task not found
+            if (!isUpdated) return NotFound();
 
-            // Map updated fields from DTO to existing entity
-            _mapper.Map(dto, todoTask);
-
-            // Update modified timestamp
-            todoTask.UpdatedAt = DateTime.UtcNow;
-
-            // Save changes to database
-            _context.SaveChanges();
-
-            // Return 204 No Content (successful update, no body)
+            // Return 204 No Content (success, no body)
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public IActionResult RemoveTask(int id)
         {
-            // Find task by id
-            var task = _context.TodoTasks.FirstOrDefault(task => task.Id == id);
+            // Call service to delete task
+            var isDeleted = _taskService.Delete(id);
 
-            // Return 404 if task does not exist
-            if (task == null) return NotFound();
+            // Return 404 if task not found
+            if (!isDeleted) return NotFound();
 
-            // Remove task from DbContext
-            _context.TodoTasks.Remove(task);
-
-            // Persist deletion to database
-            _context.SaveChanges();
-
-            // Return 204 No Content (successful deletion)
+            // Return 204 No Content (success)
             return NoContent();
         }
     }

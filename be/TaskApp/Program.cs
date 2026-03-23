@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using TaskApp.DataContext;
+using TaskApp.Services;
 
 namespace TaskApp
 {
@@ -17,6 +18,8 @@ namespace TaskApp
             builder.Services.AddControllers().AddJsonOptions(options => { 
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
+
+            builder.Services.AddScoped<ITaskService, TaskService>();
 
             builder.Services.AddAutoMapper(cfg =>
             {

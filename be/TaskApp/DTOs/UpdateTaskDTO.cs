@@ -11,7 +11,7 @@ namespace TaskApp.DTOs
 
         [MaxLength(1000, ErrorMessage = "Description max 1000 characters")]
         public string? Description { get; set; }
-
+        public TodoTaskStatus Status { get; set; }
         public DateTime Deadline { get; set; }
     }
 }
