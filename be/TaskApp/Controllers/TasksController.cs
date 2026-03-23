@@ -44,10 +44,6 @@ namespace TaskApp.Controllers
         [HttpPost]
         public IActionResult AddTask([FromBody] CreateTaskDTO taskDto)
         {
-            // Validate incoming request body based on data annotations
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             // Map DTO (client data) to Entity model
             TodoTask task = _mapper.Map<TodoTask>(taskDto);
 
@@ -71,10 +67,6 @@ namespace TaskApp.Controllers
         [HttpPut("{id}")]
         public IActionResult EditTask(int id, [FromBody] UpdateTaskDTO dto)
         {
-            // Validate incoming request body
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
             // Find existing task by id
             var todoTask = _context.TodoTasks.FirstOrDefault(t => t.Id == id);
 
