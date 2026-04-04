@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskApp.DTOs;
-using TaskApp.Services;
+using TaskApp.Services.IServices;
 
 namespace TaskApp.Controllers
 {

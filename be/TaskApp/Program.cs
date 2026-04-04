@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using TaskApp.DataContext;
 using TaskApp.Services;
+using TaskApp.Services.IServices;
 
 namespace TaskApp
 {
@@ -20,6 +21,7 @@ namespace TaskApp
             });
 
             builder.Services.AddScoped<ITaskService, TaskService>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
 
             builder.Services.AddAutoMapper(cfg =>
             {

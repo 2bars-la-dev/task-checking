@@ -1,6 +1,6 @@
 ﻿using TaskApp.DTOs;
 
-namespace TaskApp.Services
+namespace TaskApp.Services.IServices
 {
     public interface ITaskService
     {

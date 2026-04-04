@@ -11,6 +11,8 @@ namespace TaskApp
             CreateMap<CreateTaskDTO, TodoTask>();
             CreateMap<UpdateTaskDTO, TodoTask>();
             CreateMap<TodoTask, TaskResponseDTO>();
+
+            CreateMap<User, UserResponseDTO>();
         }
     }
 }
