@@ -6,5 +6,6 @@ namespace TaskApp.Services.IServices
     {
         UserResponseDTO Register(RegisterDTO registerDTO);
         bool CheckEmailExists(string email);
+        LoginResponseDTO Login(LoginRequestDTO loginRequestDTO);
     }
 }

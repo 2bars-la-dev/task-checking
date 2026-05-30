@@ -44,5 +44,30 @@ namespace TaskApp.Services
                 Email = user.Email,
             };
         }
+
+        public LoginResponseDTO Login(LoginRequestDTO loginRequestDTO)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.Email == loginRequestDTO.Email);
+
+            LoginResponseDTO result = new LoginResponseDTO
+            {
+                UserId = 0,
+                Email = null,
+                Message = "Email hoặc mật khẩu không đúng"
+            };
+
+            if (user == null)
+                return result;
+
+            var hashedResult = _hasher.VerifyHashedPassword(user, user.PasswordHash, loginRequestDTO.Password);
+
+            if (hashedResult == PasswordVerificationResult.Failed)
+                return result;
+
+            result.Email = user.Email;
+            result.UserId = user.Id;
+            result.Message = "Đăng nhập thành công";
+            return result;
+        }
     }
 }

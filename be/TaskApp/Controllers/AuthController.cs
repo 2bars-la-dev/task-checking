@@ -25,5 +25,16 @@ namespace TaskApp.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginRequestDTO dto)
+        {
+            var result = _authService.Login(dto);
+
+            if (result.UserId == 0)
+                return Unauthorized(result);
+
+            return Ok(result);
+        }
     }
 }
