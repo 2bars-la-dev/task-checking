@@ -10,10 +10,12 @@ namespace TaskApp.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly PasswordHasher<User> _hasher = new();
+        private readonly IJwtService _jwtService;
 
-        public AuthService(ApplicationDbContext context)
+        public AuthService(ApplicationDbContext context, IJwtService jwtService)
         {
             _context = context;
+            _jwtService = jwtService;
         }
 
         public bool CheckEmailExists(string email)
@@ -67,6 +69,7 @@ namespace TaskApp.Services
             result.Email = user.Email;
             result.UserId = user.Id;
             result.Message = "Đăng nhập thành công";
+            result.Token = _jwtService.GenerateToken(user);
             return result;
         }
     }

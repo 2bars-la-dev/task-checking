@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TaskApp.DTOs;
 using TaskApp.Services.IServices;
 
@@ -35,6 +37,17 @@ namespace TaskApp.Controllers
                 return Unauthorized(result);
 
             return Ok(result);
+        }
+
+        [Authorize]
+        [HttpGet("profile")]
+        public IActionResult Profile()
+        {
+            return Ok(new
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Email = User.FindFirst(ClaimTypes.Email)?.Value
+            });
         }
     }
 }

@@ -4,6 +4,10 @@ using System.Text.Json.Serialization;
 using TaskApp.DataContext;
 using TaskApp.Services;
 using TaskApp.Services.IServices;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Text;
 
 namespace TaskApp
 {
@@ -12,7 +16,32 @@ namespace TaskApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var jwtKey = builder.Configuration["Jwt:Key"];
 
+            builder.Services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters =
+                        new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidateLifetime = true,
+                            ValidateIssuerSigningKey = true,
+
+                            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                            ValidAudience = builder.Configuration["Jwt:Audience"],
+
+                            IssuerSigningKey =
+                                new SymmetricSecurityKey(
+                                    Encoding.UTF8.GetBytes(jwtKey)),
+
+                            ClockSkew = TimeSpan.Zero
+                        };
+                });
+
+            builder.Services.AddAuthorization();
             // Add services to the container.
 
             //Add the converter that do the work change 'doing' to 'in progress'
@@ -22,6 +51,7 @@ namespace TaskApp
 
             builder.Services.AddScoped<ITaskService, TaskService>();
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IJwtService, JwtService>();
 
             builder.Services.AddAutoMapper(cfg =>
             {
@@ -46,7 +76,36 @@ namespace TaskApp
             });
 
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
+            //AddSwaggerGen now has Authorize
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Enter JWT Token"
+                });
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -73,6 +132,7 @@ namespace TaskApp
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();
