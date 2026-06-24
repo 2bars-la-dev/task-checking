@@ -57,6 +57,7 @@ namespace TaskApp
             {
                 cfg.AddProfile(new MappingProfile());
             });
+
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             //Global validation response

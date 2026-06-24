@@ -19,6 +19,8 @@ namespace TaskApp.Models
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
 
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public int UserId { get; set; }
+        public User User { get; set; } = null!;
     }
 
     public enum TodoTaskStatus
